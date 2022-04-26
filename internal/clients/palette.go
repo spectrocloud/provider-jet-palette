@@ -19,6 +19,7 @@ package clients
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 
 	"github.com/crossplane/crossplane-runtime/pkg/resource"
 	"github.com/pkg/errors"
@@ -31,17 +32,24 @@ import (
 )
 
 const (
+	fmtEnvVar = "%s=%s"
+
 	// error messages
 	errNoProviderConfig     = "no providerConfigRef provided"
 	errGetProviderConfig    = "cannot get referenced ProviderConfig"
 	errTrackUsage           = "cannot track ProviderConfig usage"
 	errExtractCredentials   = "cannot extract credentials"
 	errUnmarshalCredentials = "cannot unmarshal palette credentials as JSON"
-	keyHost                 = "host"
-	keyUsername             = "username"
-	keyProjectName          = "project_name"
-	keyPassword             = "password"
-	keyAPIKey               = "api_key"
+)
+
+const (
+	keyAPIURL      = "host"
+	keyProjectName = "project_name"
+	keyAPIKey      = "api_key"
+
+	// Palette credentials environment variable names
+
+	envPaletteAPIKey = "PALETTE_API_KEY"
 )
 
 // TerraformSetupBuilder builds Terraform a terraform.SetupFn function which
@@ -81,27 +89,22 @@ func TerraformSetupBuilder(version, providerSource, providerVersion string) terr
 
 		// set provider configuration
 
-		ps.Configuration = map[string]interface{}{}
-		if v, ok := paletteCreds[keyHost]; ok {
-			ps.Configuration[keyHost] = v
+		ps.Configuration = map[string]interface{}{
+			keyAPIURL:      paletteCreds[keyAPIURL],
+			keyProjectName: paletteCreds[keyProjectName],
 		}
-		if v, ok := paletteCreds[keyUsername]; ok {
-			ps.Configuration[keyUsername] = v
-		}
+
 		if v, ok := paletteCreds[keyProjectName]; ok {
 			ps.Configuration[keyProjectName] = v
-		}
-		if v, ok := paletteCreds[keyPassword]; ok {
-			ps.Configuration[keyPassword] = v
 		}
 		if v, ok := paletteCreds[keyAPIKey]; ok {
 			ps.Configuration[keyAPIKey] = v
 		}
 
 		// set environment variables for sensitive provider configuration
-		// ps.Env = []string{
-		// 	fmt.Sprintf(fmtEnvVar, envPassword, paletteCreds[keyPassword]),
-		// }
+		ps.Env = []string{
+			fmt.Sprintf(fmtEnvVar, envPaletteAPIKey, paletteCreds[keyAPIKey]),
+		}
 		return ps, nil
 	}
 }
