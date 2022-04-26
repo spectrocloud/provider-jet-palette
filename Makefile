@@ -9,8 +9,8 @@ export TERRAFORM_VERSION := 1.1.6
 export TERRAFORM_PROVIDER_SOURCE := spectrocloud/spectrocloud
 export TERRAFORM_PROVIDER_VERSION := 0.6.16
 export TERRAFORM_PROVIDER_DOWNLOAD_NAME := terraform-provider-spectrocloud
-export TERRAFORM_PROVIDER_DOWNLOAD_URL_PREFIX := https://github.com/spectrocloud/terraform-provider-spectrocloud/releases/tag/v0.6.16
-export TERRAFORM_NATIVE_PROVIDER_BINARY := terraform-provider-spectrocloud_0.6.16
+export TERRAFORM_PROVIDER_DOWNLOAD_URL_PREFIX := https://github.com/spectrocloud/terraform-provider-spectrocloud/releases/download/v$(TERRAFORM_PROVIDER_VERSION)
+export TERRAFORM_NATIVE_PROVIDER_BINARY := terraform-provider-spectrocloud_v$(TERRAFORM_PROVIDER_VERSION)
 
 PLATFORMS ?= linux_amd64 linux_arm64
 
