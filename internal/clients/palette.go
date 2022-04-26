@@ -41,7 +41,7 @@ const (
 	keyUsername             = "username"
 	keyProjectName          = "project_name"
 	keyPassword             = "password"
-	keyApiKey               = "api_key"
+	keyAPIKey               = "api_key"
 )
 
 // TerraformSetupBuilder builds Terraform a terraform.SetupFn function which
@@ -94,8 +94,8 @@ func TerraformSetupBuilder(version, providerSource, providerVersion string) terr
 		if v, ok := paletteCreds[keyPassword]; ok {
 			ps.Configuration[keyPassword] = v
 		}
-		if v, ok := paletteCreds[keyApiKey]; ok {
-			ps.Configuration[keyApiKey] = v
+		if v, ok := paletteCreds[keyAPIKey]; ok {
+			ps.Configuration[keyAPIKey] = v
 		}
 
 		// set environment variables for sensitive provider configuration
