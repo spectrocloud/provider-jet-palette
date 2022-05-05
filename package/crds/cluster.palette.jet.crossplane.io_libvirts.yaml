@@ -63,6 +63,8 @@ spec:
                 type: string
               forProvider:
                 properties:
+                  applySetting:
+                    type: string
                   backupPolicy:
                     items:
                       properties:
@@ -205,12 +207,29 @@ spec:
                                   - sizeInGb
                                   type: object
                                 type: array
+                              cachePassthrough:
+                                type: boolean
                               cpu:
                                 type: number
                               cpusSets:
                                 type: string
                               diskSizeGb:
                                 type: number
+                              gpuConfig:
+                                items:
+                                  properties:
+                                    deviceModel:
+                                      type: string
+                                    numGpus:
+                                      type: number
+                                    vendor:
+                                      type: string
+                                  required:
+                                  - deviceModel
+                                  - numGpus
+                                  - vendor
+                                  type: object
+                                type: array
                               memoryMb:
                                 type: number
                             required:

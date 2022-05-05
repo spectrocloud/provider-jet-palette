@@ -85,6 +85,9 @@ type ProfileParameters struct {
 
 	// +kubebuilder:validation:Optional
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 // ProfileSpec defines the desired state of Profile

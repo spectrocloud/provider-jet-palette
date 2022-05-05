@@ -261,6 +261,9 @@ type EksPackParameters struct {
 type EksParameters struct {
 
 	// +kubebuilder:validation:Optional
+	ApplySetting *string `json:"applySetting,omitempty" tf:"apply_setting,omitempty"`
+
+	// +kubebuilder:validation:Optional
 	BackupPolicy []EksBackupPolicyParameters `json:"backupPolicy,omitempty" tf:"backup_policy,omitempty"`
 
 	// +kubebuilder:validation:Required

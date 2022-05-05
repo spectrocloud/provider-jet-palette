@@ -37,6 +37,21 @@ type AttachedDisksParameters struct {
 	SizeInGb *float64 `json:"sizeInGb" tf:"size_in_gb,omitempty"`
 }
 
+type GpuConfigObservation struct {
+}
+
+type GpuConfigParameters struct {
+
+	// +kubebuilder:validation:Required
+	DeviceModel *string `json:"deviceModel" tf:"device_model,omitempty"`
+
+	// +kubebuilder:validation:Required
+	NumGpus *float64 `json:"numGpus" tf:"num_gpus,omitempty"`
+
+	// +kubebuilder:validation:Required
+	Vendor *string `json:"vendor" tf:"vendor,omitempty"`
+}
+
 type LibvirtBackupPolicyObservation struct {
 }
 
@@ -252,6 +267,9 @@ type LibvirtPackParameters struct {
 type LibvirtParameters struct {
 
 	// +kubebuilder:validation:Optional
+	ApplySetting *string `json:"applySetting,omitempty" tf:"apply_setting,omitempty"`
+
+	// +kubebuilder:validation:Optional
 	BackupPolicy []LibvirtBackupPolicyParameters `json:"backupPolicy,omitempty" tf:"backup_policy,omitempty"`
 
 	// +kubebuilder:validation:Optional
@@ -318,10 +336,16 @@ type MachinePoolInstanceTypeParameters struct {
 	CPU *float64 `json:"cpu" tf:"cpu,omitempty"`
 
 	// +kubebuilder:validation:Optional
+	CachePassthrough *bool `json:"cachePassthrough,omitempty" tf:"cache_passthrough,omitempty"`
+
+	// +kubebuilder:validation:Optional
 	CpusSets *string `json:"cpusSets,omitempty" tf:"cpus_sets,omitempty"`
 
 	// +kubebuilder:validation:Required
 	DiskSizeGb *float64 `json:"diskSizeGb" tf:"disk_size_gb,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	GpuConfig []GpuConfigParameters `json:"gpuConfig,omitempty" tf:"gpu_config,omitempty"`
 
 	// +kubebuilder:validation:Required
 	MemoryMb *float64 `json:"memoryMb" tf:"memory_mb,omitempty"`

@@ -159,6 +159,9 @@ type AzurePackParameters struct {
 type AzureParameters struct {
 
 	// +kubebuilder:validation:Optional
+	ApplySetting *string `json:"applySetting,omitempty" tf:"apply_setting,omitempty"`
+
+	// +kubebuilder:validation:Optional
 	BackupPolicy []AzureBackupPolicyParameters `json:"backupPolicy,omitempty" tf:"backup_policy,omitempty"`
 
 	// +kubebuilder:validation:Required

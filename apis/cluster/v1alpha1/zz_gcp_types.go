@@ -156,6 +156,9 @@ type GCPPackParameters struct {
 type GCPParameters struct {
 
 	// +kubebuilder:validation:Optional
+	ApplySetting *string `json:"applySetting,omitempty" tf:"apply_setting,omitempty"`
+
+	// +kubebuilder:validation:Optional
 	BackupPolicy []GCPBackupPolicyParameters `json:"backupPolicy,omitempty" tf:"backup_policy,omitempty"`
 
 	// +kubebuilder:validation:Required
