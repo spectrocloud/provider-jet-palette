@@ -69,11 +69,16 @@ type EksCloudConfigObservation struct {
 
 type EksCloudConfigParameters struct {
 
+	// Mutually exclusive with `azs`. Use for Static provisioning.
 	// +kubebuilder:validation:Optional
 	AzSubnets map[string]*string `json:"azSubnets,omitempty" tf:"az_subnets,omitempty"`
 
+	// Mutually exclusive with `az_subnets`. Use for Dynamic provisioning.
 	// +kubebuilder:validation:Optional
 	Azs []*string `json:"azs,omitempty" tf:"azs,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	EncryptionConfigArn *string `json:"encryptionConfigArn,omitempty" tf:"encryption_config_arn,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	EndpointAccess *string `json:"endpointAccess,omitempty" tf:"endpoint_access,omitempty"`
@@ -289,6 +294,15 @@ type EksParameters struct {
 
 	// +kubebuilder:validation:Optional
 	Namespaces []EksNamespacesParameters `json:"namespaces,omitempty" tf:"namespaces,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	OsPatchAfter *string `json:"osPatchAfter,omitempty" tf:"os_patch_after,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	OsPatchOnBoot *bool `json:"osPatchOnBoot,omitempty" tf:"os_patch_on_boot,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	OsPatchSchedule *string `json:"osPatchSchedule,omitempty" tf:"os_patch_schedule,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	Pack []EksPackParameters `json:"pack,omitempty" tf:"pack,omitempty"`

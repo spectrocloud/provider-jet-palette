@@ -7,7 +7,7 @@ PROJECT_REPO := github.com/crossplane-contrib/$(PROJECT_NAME)
 export TERRAFORM_VERSION := 1.1.6
 
 export TERRAFORM_PROVIDER_SOURCE := spectrocloud/spectrocloud
-export TERRAFORM_PROVIDER_VERSION := 0.7.0
+export TERRAFORM_PROVIDER_VERSION := 0.7.2
 export TERRAFORM_PROVIDER_DOWNLOAD_NAME := terraform-provider-spectrocloud
 export TERRAFORM_PROVIDER_DOWNLOAD_URL_PREFIX := https://github.com/spectrocloud/terraform-provider-spectrocloud/releases/download/v$(TERRAFORM_PROVIDER_VERSION)
 export TERRAFORM_NATIVE_PROVIDER_BINARY := terraform-provider-spectrocloud_v$(TERRAFORM_PROVIDER_VERSION)

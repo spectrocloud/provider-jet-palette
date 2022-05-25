@@ -99,11 +99,17 @@ spec:
                         azSubnets:
                           additionalProperties:
                             type: string
+                          description: Mutually exclusive with `azs`. Use for Static
+                            provisioning.
                           type: object
                         azs:
+                          description: Mutually exclusive with `az_subnets`. Use for
+                            Dynamic provisioning.
                           items:
                             type: string
                           type: array
+                        encryptionConfigArn:
+                          type: string
                         endpointAccess:
                           type: string
                         publicAccessCidrs:
@@ -289,6 +295,12 @@ spec:
                       - resourceAllocation
                       type: object
                     type: array
+                  osPatchAfter:
+                    type: string
+                  osPatchOnBoot:
+                    type: boolean
+                  osPatchSchedule:
+                    type: string
                   pack:
                     items:
                       properties:

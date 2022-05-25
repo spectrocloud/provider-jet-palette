@@ -3397,6 +3397,11 @@ func (in *EksCloudConfigParameters) DeepCopyInto(out *EksCloudConfigParameters) 
 			}
 		}
 	}
+	if in.EncryptionConfigArn != nil {
+		in, out := &in.EncryptionConfigArn, &out.EncryptionConfigArn
+		*out = new(string)
+		**out = **in
+	}
 	if in.EndpointAccess != nil {
 		in, out := &in.EndpointAccess, &out.EndpointAccess
 		*out = new(string)
@@ -4047,6 +4052,21 @@ func (in *EksParameters) DeepCopyInto(out *EksParameters) {
 		for i := range *in {
 			(*in)[i].DeepCopyInto(&(*out)[i])
 		}
+	}
+	if in.OsPatchAfter != nil {
+		in, out := &in.OsPatchAfter, &out.OsPatchAfter
+		*out = new(string)
+		**out = **in
+	}
+	if in.OsPatchOnBoot != nil {
+		in, out := &in.OsPatchOnBoot, &out.OsPatchOnBoot
+		*out = new(bool)
+		**out = **in
+	}
+	if in.OsPatchSchedule != nil {
+		in, out := &in.OsPatchSchedule, &out.OsPatchSchedule
+		*out = new(string)
+		**out = **in
 	}
 	if in.Pack != nil {
 		in, out := &in.Pack, &out.Pack
