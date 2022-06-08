@@ -46,6 +46,7 @@ import (
 	helm "github.com/crossplane-contrib/provider-jet-palette/internal/controller/registry/helm"
 	oci "github.com/crossplane-contrib/provider-jet-palette/internal/controller/registry/oci"
 	appliance "github.com/crossplane-contrib/provider-jet-palette/internal/controller/spectrocloud/appliance"
+	macro "github.com/crossplane-contrib/provider-jet-palette/internal/controller/spectrocloud/macro"
 	project "github.com/crossplane-contrib/provider-jet-palette/internal/controller/spectrocloud/project"
 	team "github.com/crossplane-contrib/provider-jet-palette/internal/controller/spectrocloud/team"
 )
@@ -79,6 +80,7 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		helm.Setup,
 		oci.Setup,
 		appliance.Setup,
+		macro.Setup,
 		project.Setup,
 		team.Setup,
 	} {
